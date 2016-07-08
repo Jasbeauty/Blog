@@ -22,8 +22,8 @@ Command Shift tab ：切换到上一个应用程序
 **Command ~ ：在同一程序的不同窗口下切换，safari上网经常用**  
 Command M ：最小化当前窗口  
 **Command Option F ：有搜索栏的程序跳到搜索栏，如Preview(预览)的搜索栏，Safari的Google栏**  
-* 手势
- <br>* 手势设置  
+* 手势<br>
+ * 手势设置  
  在系统偏好设置里的触摸板里自行设置  
 ![设置](img/2.png) 
  * 个人偏好  
