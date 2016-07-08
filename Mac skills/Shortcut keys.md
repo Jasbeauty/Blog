@@ -23,11 +23,11 @@ Command Shift tab ：切换到上一个应用程序
 Command M ：最小化当前窗口  
 **Command Option F ：有搜索栏的程序跳到搜索栏，如Preview(预览)的搜索栏，Safari的Google栏**  
 * 手势
- * 手势设置  
- <br>在系统偏好设置里的触摸板里自行设置  
-![设置](img/2.png)  
+ <br>* 手势设置  
+ 在系统偏好设置里的触摸板里自行设置  
+![设置](img/2.png) 
  * 个人偏好  
- <br>三指轻拍：选择文字＋查找  
+ 三指轻拍：选择文字＋查找  
  两指：拖动页面＋轻拍右键    
  四个手指向上轻扫：Mission Control    
  捏拢拇指和其他三个手指：Launchpad   
