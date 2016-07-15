@@ -13,7 +13,8 @@ Command Shift Q ：退出所有程序并注销
 Command Option esc ：强制退出应用程序，类似于win下的任务管理器  
 Command N ：新建当前程序的文件  
 Command S ：保存  
-Command H ：隐藏当前程序（Boss Key）  
+Command H ：隐藏当前程序（Boss Key）   
+**Control Space ：打开Spotlight（按两次esc ：清空＋退出）**  
 Command Option H ：隐藏所有后台程序  
 Command P ：打印  
 Command Shift P ：页面设置  
