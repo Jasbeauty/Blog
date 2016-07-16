@@ -1,6 +1,7 @@
 ## Blog
 #### Notes
 * Markdown
+* Atom
 * ...
 
 #### Mac skills
