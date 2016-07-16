@@ -1,11 +1,12 @@
 ## MARKDOWN EDITOR - ATOM (For Mac)
 ### Why we use atom
->Our goal is a zero-compromise combination of hackability and
+> Our goal is a zero-compromise combination of hackability and
 usability: an editor that will be welcoming to an elementary school
 student on their first day learning to code, but also a tool
 they won't outgrow as they develop into seasoned hackers.
->>For myself, i regard it as a fantastic tool for coding,
-editing and reading. By the way, it's cool and useful.
+>> For myself, i regard it as a fantastic tool for coding,
+editing and reading. By the way, it's cool and useful.  
+Click [here](http://flight-manual.atom.io) to know about it.  
 
 ### How we start
 * 打开atom，新建一个file，保存为 `.md` 格式
