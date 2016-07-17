@@ -10,7 +10,7 @@ Click [here](http://flight-manual.atom.io) to know about it.
 
 ### How we start
 * 打开atom，新建一个file，保存为 `.md` 格式
-* 按快捷键 `command+shift+P` ，在弹出框中 `markdown` ，选择 `Markdown Preview: Toggle` ，即可在编辑区右边看见渲染效果，
+* 按快捷键 `command+shift+P` ，在弹出框中 `markdown` ，选择 `Markdown Preview: Toggle` 或者直接按 `control+shift+m` 即可在编辑区右边看见渲染效果，
 如下图所示：  
 ![初始渲染](Photo library/1.png)
 * 接下来你就可以随意地编辑啦
