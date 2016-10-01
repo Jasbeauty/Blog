@@ -20,6 +20,7 @@ press `Cmd+,` keybinding
  * Changing the theme
  * Soft wrap
  * Soft tabs
+
  > ![用法](img/1.png)
 
 * Opening, modifying and saving files  
