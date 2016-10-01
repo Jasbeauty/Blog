@@ -112,6 +112,10 @@ html中的1到6阶标题，如下图所示：
 `~~mistaken text~~` 的渲染效果：~~mistaken text~~
 #### Syntax Highlighting
 ![表格](img/12.png)
+<<<<<<< HEAD:Markdown/Tips.md
+
+=======
+>>>>>>> 050c33f0a875f3aff5fc2fa4c481cd32f73db78d:Notes/Markdown/Tips.md
 #### Table
 ![表格](img/11.png)
 #### Reference
