@@ -11,6 +11,7 @@ Command W ：关闭当前窗口
 Command Q ：关闭当前程序  
 Command Shift Q ：退出所有程序并注销  
 Command Option esc ：强制退出应用程序，类似于win下的任务管理器  
+**Command control Space ：打开emoji进行编辑**  
 Command N ：新建当前程序的文件  
 Command S ：保存  
 Command H ：隐藏当前程序（Boss Key）   
