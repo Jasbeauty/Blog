@@ -1,8 +1,11 @@
-## Blog
+## Learing 
 #### Notes
 * Markdown
 * Atom
-* ...
+* Java
+* cocos2d-x
+* IT
+
 
 #### Mac skills
 * 快捷键
