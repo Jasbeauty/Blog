@@ -126,17 +126,45 @@ main方法所在的类叫主类：`public static void main(String args[])`
 #### String类
 * 在java.lang包中
 * 值在创建后不能被更改
-###### 方法
-* compareTo(String anotherString)：按字典顺序比较两个字符串，如果此字符串的字典大小超过字符串参数，则值大于0
-* concat(String str)：将指定的字符串连接到该字符串的末尾
-* endsWith(String suffix)：测试此字符串是否以指定的后缀结尾
-* equals(Object anObject)：将此字符串与指定对象进行比较
-* String.format("hi,%s", "jas")：返回格式化的字符串 `hi,jas`
-* a.hashCode()：返回此字符串的哈希码
-* String.join("-","java","is","cool")：返回一个新的字符串 `java-is-cool`
-* length()
-* replace(char oldChar, char newChar)
-* 
+> * 原因：
+>     * String类本身是final的，不可被继承
+>     * String类内部通过private final char value[]实现，从而保证了引用的不可变和对外的不可见
+>     * String内部通过良好的封装，不去改变value数组的值
+> * 优势：
+>     * 安全性
+>     * 效率高
+###### 常用方法
+* `compareTo(String anotherString)`：按字典顺序比较两个字符串，如果此字符串的字典大小超过字符串参数，则值大于0 ==> `int`
+* `concat(String str)`：将指定的字符串连接到该字符串的末尾 ==> `new String`
+* `endsWith(String suffix)`：测试此字符串是否以指定的后缀结尾 ==> `boolean`
+* `equals(Object anObject)`：将此字符串与指定对象进行比较 ==> `boolean`
+* `String.format("hi,%s", "jas")`：返回格式化的字符串 `hi,jas`
+* `a.hashCode()`：返回此字符串的哈希码 ==> `int`
+* `String.join("-","java","is","cool")`：返回一个新的字符串 `java-is-cool`
+* `length()` ==> `int`
+* `replace(char oldChar, char newChar)` ==> `new String`
+* `split(String regex)` ==> `String[]`
+* `trim()`：返回一个字符串，其值为此字符串，并删除任何前导和尾随空格 ==> `new String`
+* `charAt(int index)`：返回当前字符串的某一指定位置的字符 ==> `String`
+* `toCharArray()`：将String对象转换为字符型数组 ==> `char[]`
+
+#### StringBuffer、StringBuilder类
+* 字符串内容可以变化
+* 在java.lang包中
+###### 常用方法
+* `append()`
+* `delete(int start, int end)`：删除从start为开始索引到end-1索引之间的字符串
+* `insert()`
+* `replace()`
+* `reverse()`：颠倒StringBuffer对象的内容
+* `length()`
+* `setCharAt(int index, char ch)`：将指定索引处的字符设置为参数ch中的字符
+
+## 自动装箱与拆箱
+* 自动装箱就是Java自动将原始类型值转换成对应的对象，比如将int的变量转换成Integer对象，这个过程叫做装箱，反之将Integer对象转换成int类型值，这个过程叫做拆箱
+> 原始类型`byte,short,char,int,long,float,double`和boolean对应的封装类为`Byte,Short,Character,Integer,Long,Float,Double,Boolean`
+* 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值
+
 
 
 
