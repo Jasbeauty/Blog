@@ -165,6 +165,8 @@ main方法所在的类叫主类：`public static void main(String args[])`
 > 原始类型`byte,short,char,int,long,float,double`和boolean对应的封装类为`Byte,Short,Character,Integer,Long,Float,Double,Boolean`
 * 自动装箱时编译器调用valueOf将原始类型值转换成对象，同时自动拆箱时，编译器通过调用类似intValue(),doubleValue()这类的方法将对象转换成原始类型值
 
+## 在一个静态方法内调用一个非静态成员为什么是非法的
+
 
 
 
