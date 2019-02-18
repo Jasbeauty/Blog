@@ -417,10 +417,14 @@ i=9,j=20
 #### 阻塞状态 Blocked、Waiting、Sleeping
 阻塞时该线程不能进入排队队列
 * 处于运行状态的线程进入阻塞状态的原因
-      * 线程调用了`sleep()`方法，而进入睡眠状态；睡眠时间到期或者线程调用了方法`interrupt()`，使睡眠状态结束，进入就绪状态
-      * 为等待访问某个共享对象的信号变量，当前线程调用了`wait()`方法而进入等待状态，直到另一线程为共享对象调用了方法`notify()`或`notifyAll()`为止，使该线程等待状态结束而进入就绪状态；处于等待状态的线程，因调用了`interrupt()`方法，也会使等待状态结束，进入就绪状态
-      * 线程进入同步`synchronized`语句时，因要对共享的对象加排斥锁而未获成功，也将进入阻塞状态，直到获得排斥锁为止
-      * 线程因输入输出请求，导致线程阻塞，输入输出操作完成时，使线程进入就绪状态
+
+    * 线程调用了`sleep()`方法，而进入睡眠状态；睡眠时间到期或者线程调用了方法`interrupt()`，使睡眠状态结束，进入就绪状态
+      
+    * 为等待访问某个共享对象的信号变量，当前线程调用了`wait()`方法而进入等待状态，直到另一线程为共享对象调用了方法`notify()`或`notifyAll()`为止，使该线程等待状态结束而进入就绪状态；处于等待状态的线程，因调用了`interrupt()`方法，也会使等待状态结束，进入就绪状态
+      
+    * 线程进入同步`synchronized`语句时，因要对共享的对象加排斥锁而未获成功，也将进入阻塞状态，直到获得排斥锁为止
+      
+    * 线程因输入输出请求，导致线程阻塞，输入输出操作完成时，使线程进入就绪状态
 #### 死亡状态 Dead
 当一个`thread`执行结束（即从`run()`方法返回时），将到达死亡状态，不再具有继续运行的能力
 
@@ -431,8 +435,64 @@ i=9,j=20
 * final类中的成员方法都会被隐式地指定为final方法，因此不能对这些方法进行覆盖和修改
 * final类中的非final域变量可以被修改，final类中的成员变量可以根据自己的实际需要设计为final
 #### 修饰方法
-* 被
-* 原因一是把方法锁定，以防任何继承类修改它的含义；原因二是效率
+* 被final修饰的方法不能被重写（可以重载多个final修饰的方法）
+* 使用final方法：原因一是把方法锁定，以防任何继承类修改它的含义；原因二是效率
+* 一个类的private方法会隐式的被指定为final方法
+#### 修饰变量
+* final成员变量表示常量，只能被赋值一次，赋值后值不再改变
+* 当函数的参数类型声明为final时，说明该参数可以读取，但无法改变它的值
+
+## Java中的异常处理（异常类层次结构、Throwable类常用方法、异常处理总结）
+#### 层次结构
+```
+Throwable ___Exception ___RuntimeException
+         |            |___IOException ___ArithmeticException 算术运算溢出，如除数为零
+         |                            ___ArrayIndexOutOfBandsException 数组下标越界异常
+         |                            ___ArrayStoreException 数组存储异常，如数组复制时，两者类型不一致时，导致异常
+         |                            ___NullPointerException 空指针异常
+         |                            ___NumberFormatException 数据格式异常
+         |                            ___OutOfMemoryException 内存溢出异常
+         |                            ___IOException 输入/输出中的异常
+         |                            ___FileNotFoundException 文件找不到异常
+         |                            ___NoClassDefFoundException 没有找到类定义时的异常
+         |___Error    
+```
+#### Throwable类常用方法
+* Throwable类是所有异常的父类
+* 几个常见方法
+
+    * getMessage()：获取异常信息，返回字符串
+      
+    * toString()：获取异常类名和异常信息，返回字符串
+      
+    * printStackTrace()：获取异常类名和异常信息，以及异常出现在程序中的位置；返回值void
+      
+```
+public class Demo_Throwable {
+    public static void main(String[] args) {
+        try{
+            System.out.println(1/0);
+        }catch(Exception e){    //Exception e = new AithmeticException("/ by zero")
+            // System.out.println(e.getMessage()); //获取异常信息  / by zero
+            // System.out.println(e); //默认调用toString()方法，打印异常类名和异常信息  
+            // java.lang.ArithmeticException: / by zero
+            e.printStackTrace();  //JVM默认就用这种方式处理异常
+        }
+        catch(要处理的异常类型和标识符){
+            // catch 一个异常并进行异常处理
+        }
+        ...
+        
+        finally{
+            // 最终处理
+        }
+    }
+
+}
+```
+#### 小结
+
+## java序列化中如果有些字段不想进行序列化，怎么办
 
 
 
