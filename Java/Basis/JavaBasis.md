@@ -1,4 +1,7 @@
 #### [面向对象和面向过程的区别](#a)
+#### [Java 语言有哪些特点](#b)
+#### [什么是JDK什么是JRE什么是JVM & 三者之间的联系和区别](#c)
+#### [什么是字节码 & 采用字节码的最大好处是什么](#d)
 
 ## <span id="a">面向对象和面向过程的区别</span>
 #### 面向对象
@@ -11,7 +14,7 @@
 * 其程序单位是过程或函数
 * 可复用性差
 
-## Java 语言有哪些特点
+## <span id="b">Java 语言有哪些特点</span>
 * 简单性
 * 面向对象
 * 平台无关性
@@ -23,7 +26,7 @@
 * 多线程
 * 分布式处理
 
-## 什么是JDK什么是JRE什么是JVM 三者之间的联系和区别
+## <span id="c">什么是JDK什么是JRE什么是JVM & 三者之间的联系和区别</span>
 #### JDK
 Java Development Kits <==> Java开发工具包
 开发的核心
@@ -36,7 +39,7 @@ Java Virtual Machine <==> Java虚拟机
 一层层的嵌套关系：JDK > JRE > JVM
 JDK = JRE + JVM + 其它
 
-## 什么是字节码 采用字节码的最大好处是什么
+## <span id="d">什么是字节码 & 采用字节码的最大好处是什么</span>
 字节码 Bytecode（.class 文件）：是一种介于Java（用户语言）和机器语言之间的中间语言；是 Java代码部署的最小单元（二进制）
 
 Java编译器将Java源程序编译为JVM字节码；通过Java解释器就可以运行程序
@@ -491,9 +494,107 @@ public class Demo_Throwable {
 }
 ```
 #### 小结
+* 应根据具体的情况选择在何处处理异常
+     * 在方法内捕获并处理
+     * 用throws子句把它交给调用栈中上层的方法去处理
+* 对非运行时异常必须捕获或声明
+* 异常可以人为地抛出，用throw new语句
+* 异常可以是系统已经定义好的，也可以是用户自己定义的（必须继承自Throwable或Exception类）
+* 应该使用finally语句为异常处理提供统一的出口
 
 ## java序列化中如果有些字段不想进行序列化，怎么办
+#### 序列化
+把对象转换为字节序列的过程称为对象的序列化
+#### 反序列化
+把字节序列恢复为对象的过程称为对象的反序列化
+#### 常用用途
+* 把对象的字节序列永久地保存到硬盘上，通常存放在一个文件中，让它们离开内存空间
+* 在网络上传送对象的字节序列
+> 当两个进程在进行远程通信时，彼此可以发送各种类型的数据；无论是何种类型的数据，都会以二进制序列的形式在网络上传送；发送方需要把这个Java对象转换为字节序列，才能在网络上传送；接收方则需要把字节序列再恢复为Java对象
+#### JDK类库中的序列化API
+###### 对象序列化步骤
+1、创建一个对象输出流，它可以包装一个其他类型的目标输出流，如文件输出流
+2、通过对象输出流的writeObject()方法写对象
+###### 对象反序列化步骤
+1、创建一个对象输入流，它可以包装一个其他类型的源输入流，如文件输入流
+2、通过对象输入流的readObject()方法读取对象
+###### 示例
+```java
+import java.io.Serializable;
 
+public class Person implements Serializable {
+    /**
+     * 序列化ID
+     */
+    private static final long serialVersionUID = -5809782578272943999L;
+    private int age;
+    private String name;
+    private String sex;
 
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+}
+```
+```java
+import java.io.*;
+import java.text.MessageFormat;
+
+public class TestObjSerializeAndDeserialize {
+    public static void main(String[] args) throws Exception{
+        SerializePerson();
+        Person p = DeserializePerson();
+//        System.out.println(p);
+        System.out.println(MessageFormat.format("name={0}, age={1}, sex={2}",p.getName(),p.getAge(),p.getSex()));
+    }
+    /**
+     * 序列化Person对象
+     */
+    private static void SerializePerson() throws IOException{
+        Person person = new Person();
+        person.setName("fortunate");
+        person.setSex("female");
+        person.setAge(26);
+        // ObjectOutputStream 对象输出流，将Person对象存储到E盘的Person.txt文件中，完成对Person对象的序列化操作
+        ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream(new File("Person.txt")));
+        oo.writeObject(person);
+        System.out.println("Person对象 序列化成功！");
+        oo.close();
+    }
+    /**
+     * 反序列化Person对象
+     */
+    private static Person DeserializePerson() throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("Person.txt")));
+        Person person = (Person) ois.readObject();
+        System.out.println("Person对象 反序列化成功！");
+        return person;
+    }
+}
+```
+输出
+```
+Person对象 序列化成功！
+Person对象 反序列化成功！
+name=fortunate, age=26, sex=female
+```
